@@ -44,6 +44,13 @@ section du fond d'écran  clickPasss pour lancer le jeu
     align-items: center;
     justify-content: center;
 }
+.conteneurCP
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .background {
     /* disposition des éléments */
