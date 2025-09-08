@@ -1,0 +1,61 @@
+{
+    "name" : "Memory Emoji Game",
+    "short_name" : "M.E.G",
+    "start_url" : "main.html",
+    "orientation" : "portrait",
+    "display" : "standalone",
+    "background_color"  : "white",
+    "theme_color"  : "white",
+    "icons"  : 
+    [
+        {
+            "src":"/fonts/icones/MEG 72X72.png",
+            "sizes":"72x72",
+            "type": "image/png"
+        }
+        ,
+        {
+            "src":"/fonts/icones/MEG 96X96.png",
+            "sizes":"96x96",
+            "type": "image/png"
+        }
+        ,
+        {
+            "src":"/fonts/icones/MEG 128X128.png",
+            "sizes":"128x128",
+            "type": "image/png"
+        }
+        ,
+        {
+            "src":"/fonts/icones/MEG 144X144.png",
+            "sizes":"144x144",
+            "type": "image/png"
+        }
+        ,
+        {
+            "src":"/fonts/icones/MEG 152X152.png",
+            "sizes":"152x152",
+            "type": "image/png"
+        }
+        ,
+        {
+            "src":"/fonts/icones/MEG 192X192.png",
+            "sizes":"192x192",
+            "type": "image/png"
+        }
+        ,
+        {
+            "src":"/fonts/icones/MEG 384X384.png",
+            "sizes":"384x384",
+            "type": "image/png"
+        }
+        ,
+        {
+            "src":"/fonts/icones/MEG 512X512.png",
+            "sizes":"512x512",
+            "type": "image/png"
+        }
+
+    ]
+    
+}
