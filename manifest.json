@@ -1,7 +1,7 @@
 {
     "name" : "Memory Emoji Game",
     "short_name" : "M.E.G",
-    "start_url" : "main.html",
+    "start_url" : "index.html",
     "orientation" : "portrait",
     "display" : "standalone",
     "background_color"  : "white",
@@ -58,4 +58,5 @@
 
     ]
     
+
 }
