@@ -1,0 +1,1995 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Ma police";
+    src: url(./fonts/polices/LuckiestGuy-Regular.ttf);
+}
+
+:root {
+    --couleur1: #e96d49;
+    --couleur2: #e56f03;
+    --couleur3: #1e9bff;
+    --couleur4: #6eff3e;
+    --couleur5: #ff1867;
+    --couleur6: red;
+    --couleur7: #29a71a;
+    --couleur8: #3c3c3c;
+    --couleur9: #e0e0e0;
+    --couleur10: #1899D6;
+    --hauteur: 90%;
+    --largeur: 80%
+}
+
+body {
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* 
+                
+section du fond d'écran  clickPasss pour lancer le jeu
+
+*/
+.clickPass {
+    /* taille */
+    max-height: 100vh;
+    /* background et disposition */
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.conteneurCP
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.background {
+    /* disposition des éléments */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#bckg_1 {
+    /* taille et disposition */
+    display: flex;
+    height: 40%;
+}
+
+.background h1 {
+    color: black;
+    font-size: 3.5rem;
+    font-family: "Ma police";
+}
+
+.background h2 {
+    color: var(--couleur1);
+    font-size: 3rem;
+    font-family: "Ma police";
+}
+
+.background h3 {
+    color: var(--couleur2);
+    font-size: 2.5rem;
+    font-family: "Ma police";
+}
+
+.bouttonGo {
+    /* position */
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.imgCharge {
+
+    /* taille */
+    height: 150px;
+    width: 150px;
+
+    /* forme */
+    cursor: progress;
+    /* Visilité */
+    visibility: hidden;
+    animation: apparition 3.5s;
+
+}
+
+.textCharge {
+    /* position  et police*/
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    /* forme */
+    cursor: none;
+    /* Visilité */
+    visibility: hidden;
+
+}
+
+#btnTutoriel {
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    z-index: 10;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#btnTutoriel:active {
+
+    transform: scale(1.2);
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+#btnTutoriel img {
+    height: 70px;
+    width: 70px;
+}
+
+
+#btnAvantPropos {
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    z-index: 10;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#btnAvantPropos:active {
+
+    transform: scale(1.2);
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+#btnAvantPropos img {
+    height: 60px;
+    width: 60px;
+}
+
+
+
+/* boutton pour lancer le jeu */
+/* Ne pas toucher au code !!! */
+.btnGoJeu,
+#btnFermerAvantPropos,
+#btnFermerTutoriel {
+    appearance: button;
+    background-color: var(--couleur10);
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 19px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    /* police ajouté */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.btnGoJeu:after,
+#btnFermerAvantPropos:after,
+#btnFermerTutoriel:after {
+    background-clip: padding-box;
+    background-color: #1CB0F6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.btnGoJeu:main,
+.btnGoJeu:focus,
+#btnFermerAvantPropos:main,
+#btnFermerAvantPropos:focus,
+#btnFermerTutoriel:main,
+#btnFermerTutoriel:focus {
+    user-select: auto;
+}
+
+.btnGoJeu:hover:not(:disabled),
+#btnFermerAvantPropos:hover:not(:disabled),
+#btnFermerTutoriel:hover:not(:disabled) {
+    filter: brightness(1.1);
+}
+
+.btnGoJeu:disabled,
+#btnFermerAvantPropos:disabled,
+#btnFermerTutoriel:disabled {
+    cursor: auto;
+}
+
+.btnGoJeu:active:after,
+#btnFermerAvantPropos:active:after,
+#btnFermerTutoriel:active:after {
+    border-width: 0 0 0px;
+}
+
+.btnGoJeu:active,
+#btnFermerAvantPropos:active,
+#btnFermerTutoriel:active {
+    padding-bottom: 10px;
+}
+
+
+/* 
+                
+section de l'avant propos
+
+*/
+
+.sectionAvantPropos {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 90%;
+    width: 90%;
+    border: 1px solid black;
+    gap: 20px;
+    background: rgb(255 255 255 / 70%);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 30;
+}
+
+
+.conteneurAvantPropos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+
+}
+
+.titreAVP {
+    display: flex;
+
+    height: 10%;
+    width: 100%;
+    /* border: 1px solid yellow; */
+}
+
+.contenuAVP {
+    display: flex;
+    /* flex-direction: column; */
+    height: 40%;
+    width: 100%;
+    /* border: 1px solid blue; */
+    box-sizing: border-box;
+}
+
+.lienChaine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 30%;
+    width: 100%;
+    /* border: 1px solid orange; */
+}
+
+.btnFermerAVP {
+    display: flex;
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+
+#btnFermerAvantPropos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lien {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    justify-self: center;
+    align-items: center;
+    width: 100%;
+}
+
+.lien img {
+    height: 60px;
+    width: 60px;
+}
+
+.lien a {
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.25s;
+    font-family: "Ma police";
+}
+
+#fb:active,
+#fb:hover {
+
+    color: var(--couleur10);
+    letter-spacing: 5px;
+    transition: .25s;
+}
+#wh:active,
+#wh:hover {
+
+    color: var(--couleur7);
+    letter-spacing: 5px;
+    transition: .25s;
+}
+
+.lienChaine p {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 3px;
+    width: 100%;
+    font-size: 3.0vw;
+}
+
+
+#titrePropos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /* position: absolute;
+    top: 5%;
+    left: 2%; */
+    text-align: center;
+    font-family: "Ma police";
+    letter-spacing: 3px;
+    font-weight: 500;
+}
+
+#textPropos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 3.0vw;
+
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 3px;
+
+}
+
+
+/* 
+    ***************************************
+                    Section tutoriel
+    ***************************************/
+    .Tutoriel {
+        
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+       z-index: 20;
+       animation: apparition 2s;
+    }
+
+    .conteneurTutoriel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 95vh;
+        width: 95vw;
+        gap: 10px;
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 10px;
+        box-sizing: border-box;
+        background: rgb(255 255 255 / 70%);
+        backdrop-filter: blur(20px);
+
+    }
+
+    .enteteTutoriel {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        /* border: 1px solid white; */
+        width: 100%;
+        height: 15%;
+        z-index: 1000;
+        /* position: fixed; */
+
+    }
+
+    .slideTutoriel {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        border: 2px solid var(--couleur10);
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 10px;
+        scroll-snap-type: x mandatory;
+
+    }
+    .slide,
+    .slideFin {
+
+        /* scroll-snap-align: start; */
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-self: center;
+        align-items: center;
+        /* width: 100vw; */
+        object-fit: cover;
+        padding: 10px;
+        border: 3px solid var(--couleur3);        
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+
+    .slideFin {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+
+    .slide img
+    {
+        height: 100%;
+        width: 100%;
+        
+    }
+    .slideFin img
+    {
+        height: 80%;
+        width: 100%;
+    }
+    #boutton
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 20%;
+        width: 100%;
+    }
+    #btnFermerTutoriel
+    {
+        width: 100%;
+    }
+    .pointer {
+        position: absolute;
+        top: 50%;
+        right: 5%;
+    }
+
+    .pointer img {
+        animation: bounce 0.25s infinite;
+        border: 1px solid black;
+        border-radius: 50%;
+        background-color: white;
+    }
+
+    .disparition {
+        animation: disparition 2s;
+        transition: .25s;
+    }
+
+
+
+
+
+
+
+
+/* Menu principale du jeu */
+@media screen and (max-width:961px) {
+
+    /* 
+    ***************************************
+                    Section choix 
+    ***************************************/
+    .choixBox {
+        background: url(./background/bckgd_pc.jpg) no-repeat center / cover;
+        height: 100vh;
+        width: 100vw;
+
+        font-family: Verdana, sans-serif;
+        animation: apparition 2.5s;
+
+    }
+
+    .conteneurChoix {
+        /* taille */
+        /* taille */
+        height: var(--hauteur);
+        width: var(--largeur);
+        /* disposition */
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* couleur et bordure */
+        border: 1px solid white;
+        border-radius: 30px;
+    }
+
+    .choix {
+        /* taile */
+        height: 50%;
+        /* disposition et background*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        backdrop-filter: blur(30px);
+        /* couleur et bordure */
+        border-radius: 30px 30px 0 0;
+    }
+
+    .choix h1 {
+        /* couleur et position */
+        color: white;
+        text-align: center;
+        padding: 10px;
+
+        /* police et texte */
+        /* text-transform: capitalize; */
+        text-shadow: 3px 3px 0px black;
+        font-size: 1.4rem;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 50%;
+        background-color: white;
+        border-radius: 0 0 30px 30px;
+    }
+
+    .btnChoix {
+
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 13px 19px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        /* police ajouté */
+        font-family: 'Ma police';
+        width: 90%;
+        letter-spacing: 5px;
+    }
+
+
+    .btnChoix:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    .btnChoix:main,
+    .btnChoix:focus {
+        user-select: auto;
+    }
+
+    .btnChoix:hover:not(:disabled) {
+        filter: brightness(1.1);
+    }
+
+    .btnChoix:disabled {
+        cursor: auto;
+    }
+
+    .btnChoix:active:after {
+        border-width: 0 0 0px;
+    }
+
+    .btnChoix:active {
+        padding-bottom: 10px;
+        letter-spacing: 10px;
+        transition: 0.35s;
+    }
+
+
+
+    /* 
+    ***************************************
+                    Section user pour pseudo 
+    ***************************************/
+
+    .userPseudo {
+        background: url(./background/bckgd_pc.jpg) no-repeat center / cover;
+        height: 100vh;
+        width: 100vw;
+        animation: apparition 2.5s;
+
+    }
+
+    .conteneurPseudo {
+
+        /* taille */
+        height: var(--hauteur);
+        width: var(--largeur);
+        /* disposition */
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* couleur et bordure */
+        border: 1px solid white;
+        border-radius: 30px;
+    }
+
+    .log {
+        /* taile */
+
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        backdrop-filter: blur(10px);
+        border-radius: 30px 30px 0 0;
+        padding: 10px;
+    }
+
+
+
+    form label {
+
+        /* couleur et position */
+        color: white;
+        text-align: center;
+        /* police et texte */
+        font-weight: 700;
+        font-size: 1.4rem;
+        font-family: Arial, Helvetica, sans-serif;
+        text-shadow: 2px 2px 2px black;
+    }
+
+    .btnComfirmer {
+
+
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 13px 19px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        /* police ajouté */
+        font-family: Arial, Helvetica, sans-serif;
+        width: 100%;
+    }
+
+    .btnComfirmer:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+
+
+
+
+
+    }
+
+    .btnComfirmer:main,
+    .btnComfirmer:focus {
+        user-select: auto;
+    }
+
+    .btnComfirmer:hover:not(:disabled) {
+        filter: brightness(1.1);
+    }
+
+    .btnComfirmer:disabled {
+        cursor: auto;
+    }
+
+    .btnComfirmer:active:after {
+        border-width: 0 0 0px;
+    }
+
+    .btnComfirmer:active {
+        padding-bottom: 10px;
+    }
+
+
+
+
+
+    /* form button:active {
+        transition: 0.2s;
+        border: 3px solid black;
+    } */
+
+    form input {
+        /* position  et taille*/
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0;
+        padding: 13px;
+        width: 90%;
+        /* couleur */
+        background-color: white;
+        /* police,texte et bordure */
+        font-weight: 800;
+        font-size: 1.2rem;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: capitalize;
+
+        /* forme et bordure */
+        outline: none;
+        border: none;
+        border-radius: 30px;
+    }
+
+    .charge {
+        /* position et couleur */
+        display: flex;
+        flex-direction: column;
+        background: white;
+        align-items: center;
+        justify-content: center;
+
+        /* bordure et taille */
+        height: 50%;
+        border-radius: 0 0 30px 30px;
+
+    }
+
+    #imageCourage {
+        /* position et taille, visibilité */
+        display: flex;
+        width: 60%;
+        height: 60%;
+        visibility: hidden;
+    }
+
+    #messageCourage {
+        /* style et visibilité,police */
+        font-size: 1.1rem;
+        font-weight: 500;
+        font-family: "Ma police";
+        text-align: center;
+        margin-top: 30px;
+        visibility: hidden;
+    }
+
+    /* 
+    ***************************************
+                    Section ChargerPseudo 
+    ***************************************/
+
+
+    .chargePseudo {
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 45%;
+        width: 70%;
+        border: 1px solid black;
+        gap: 20px;
+        background: rgb(255 255 255 / 70%);
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+
+    }
+
+    .conteneurChargePseudo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        gap: 20px;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .contenuChargePseudo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 20px;
+    }
+
+    #titreChargePseudo {
+
+
+        width: 90%;
+        align-items: center;
+        gap: 10px;
+        display: flex;
+        font-family: 'Ma police';
+        letter-spacing: 2px;
+        font-size: 5vw;
+    }
+
+    #messageChargePseudo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        font-size: 1.3rem;
+
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 3px;
+        margin-left: 5%;
+    }
+
+    #textChargerPseudo {
+        font-family: 'Ma police';
+        text-transform: capitalize;
+    }
+
+    .btnsChoixChargePseudo {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+
+    }
+
+    #btnOuiChargePseudo,
+    #btnNonChargePseudo {
+        appearance: button;
+        background-color: #e0e0e0;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 13px 19px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        /* police ajouté   #1CB0F6   #e0e0e0   #3c3c3c  */
+        font-family: Arial, Helvetica, sans-serif;
+        width: 40%;
+    }
+
+    #btnOuiChargePseudo:after,
+    #btnNonChargePseudo:after {
+        background-clip: padding-box;
+        background-color: #3c3c3c;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    #btnOuiChargePseudo :main,
+    #btnNonChargePseudo :main,
+    #btnOuiChargePseudo :focus,
+    #btnNonChargePseudo :focus {
+        user-select: auto;
+    }
+
+    #btnOuiChargePseudo r:not(:disabled),
+    #btnNonChargePseudo r:not(:disabled) {
+        filter: brightness(1.1);
+    }
+
+    #btnOuiChargePseudo:disabled,
+    #btnNonChargePseudo:disabled {
+        cursor: auto;
+    }
+
+    #btnOuiChargePseudo:active:after,
+    #btnNonChargePseudo:active:after {
+        border-width: 0 0 0px;
+        background-color: #1899D6;
+    }
+
+    #btnOuiChargePseudo:active,
+    #btnNonChargePseudo:active {
+        padding-bottom: 10px;
+        background-color: #1CB0F6;
+
+    }
+
+
+
+
+
+
+
+
+    /* 
+    ***************************************
+                    Section PseudoVide 
+    ***************************************/
+    .pseudoVide {
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 35%;
+        width: 70%;
+        border: 1px solid black;
+        gap: 20px;
+        background: rgb(255 255 255 / 70%);
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+    }
+
+    .conteneurPseudoVide {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+        gap: 20px;
+        text-align: center;
+        margin-top: 10%;
+    }
+
+    #titrePseudoVide {
+
+        width: 90%;
+        text-align: center;
+        gap: 10px;
+        display: flex;
+        font-family: "Ma police";
+        letter-spacing: 5px;
+
+    }
+
+    #messagePseudoVide {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        font-size: 1.3rem;
+        /* text-align: center; */
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 3px;
+        margin-left: 5%;
+    }
+
+    #btnPseudovide {
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 13px 19px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        /* police ajouté */
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #btnPseudovide:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    #btnPseudovide:main,
+    #btnPseudovide:focus {
+        user-select: auto;
+    }
+
+    #btnGoJeu:hover:not(:disabled) {
+        filter: brightness(1.1);
+    }
+
+    #btnPseudovide:disabled {
+        cursor: auto;
+    }
+
+    #btnPseudovide:active:after {
+        border-width: 0 0 0px;
+    }
+
+    #btnPseudovide:active {
+        padding-bottom: 10px;
+
+    }
+
+
+
+
+
+
+
+    /* 
+    ***************************************
+                    Section Decompte123 
+    ***************************************/
+
+    .sectionDecompte123 {
+
+        display: flex;
+        background: black;
+        height: 100vh;
+    }
+
+    #decompte123 {
+        font-size: 6rem;
+        color: white;
+        display: flex;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'Ma police';
+        text-align: center;
+
+    }
+
+
+
+
+    /* 
+    ***************************************
+                    Section Jeu 
+    ***************************************/
+
+    .sectionJeu {
+        display: flex;
+        align-items: center;
+        min-height: 100vh;
+        background: #0d614b;
+        overflow: hidden;
+        animation: apparition 1.5s ease-in;
+        justify-content: center;
+    }
+
+    .conteneurJeu {
+
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+
+        border: 3px solid black;
+        height: 95vh;
+        width: 98vw;
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .plateauJeu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+        width: 98vw;
+        /* background: transparent;
+        backdrop-filter: blur(30px); */
+        /* border-radius: 30px 0 0 30px; */
+    }
+
+    #retour {
+
+        border-radius: 20px;
+        background: transparent;
+        cursor: pointer;
+        transition: 0.35s;
+        width: 25%;
+    }
+
+    #retour:active {
+        background: #fff;
+        border: 3px solid #fff;
+        transition: 0.35s;
+        cursor: pointer;
+    }
+
+    #retour img {
+        height: 50px;
+        width: 50px;
+    }
+
+    #recommencer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        cursor: pointer;
+        background: transparent;
+        transition: 0.35s;
+        width: 25%;
+    }
+
+    #recommencer:active {
+        background: #fff;
+        border: 3px solid #fff;
+
+        transition: 0.35s;
+    }
+
+    .donneesJeu {
+
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+
+        flex-wrap: wrap;
+        color: black;
+        text-transform: capitalize;
+        margin-top: 5px;
+
+        font-family: 'Ma police';
+
+        width: 100%;
+
+    }
+
+    .donneesJeu h1 {
+
+        /* position: absolute;
+        top: 39%; */
+        font-size: 3.2rem;
+    }
+
+    .score {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        /* margin: 0 2px 0 2px; */
+        font-size: 1.5rem;
+
+        font-family: 'Ma police';
+        color: white;
+        gap: 15px;
+        width: 50%;
+    }
+
+    .minuteur {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+       
+        font-size: 1.5rem;
+        font-weight: 600;
+        width: 100%;
+        gap: 10px;
+        font-family: "Ma police";
+        color: white;
+        
+    }
+
+    #pauseChrono,
+    #playChrono {
+
+        transition: .25s;
+        padding: 3px;
+        height: 50px;
+        width: 50px;
+        border-radius: 20px;
+    }
+
+    #minute,
+    #seconde {
+        padding: 3px
+    }
+
+    #playChrono:active,
+    #pauseChrono:active {
+        transform: scale(1.2);
+        background: #fff;
+        border: 3px solid white;
+
+    }
+
+    .jeu {
+        width: 98vw;
+        height: 70vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        /* gap: 10px; */
+        transform-style: preserve-3d;
+        perspective: 500px;
+        transition: .10s;
+        overflow-y: scroll;
+    }
+
+    .item {
+        position: relative;
+        width: 22%;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4.9px;
+        font-size: 5vh;
+        background: #fff;
+        transform: rotateY(180deg);
+        transition: 0.25s;
+        cursor: pointer;
+    }
+
+    .item.boxOpen {
+        transform: rotateY(0deg);
+
+    }
+
+    .item::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgb(136, 28, 28);
+        border: 3px solid black;
+        border-radius: 4px;
+        transition: 0.25s;
+        /* opacity: 1; */
+        /* opacity: 0.5; */
+        backface-visibility: hidden;
+
+    }
+
+    .boxOpen:after,
+    .boxMatch:after {
+        transform: rotateY(180deg);
+
+    }
+
+    .glow {
+        box-shadow:
+            0px 0px 10px white,
+            0px 0px 20px white;
+        pointer-events: none;
+    }
+
+
+    .imageBox {
+        background: rgb(0, 0, 0, 0.7);
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+    }
+
+    #imgBoxJeu {
+        height: 40%;
+        width: 80%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+
+    }
+
+
+    /* 
+    ***************************************
+                    Section Congralutation 
+    ***************************************/
+    .sectionCongrat {
+
+        background: black;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        font-family: 'Ma police';
+
+    }
+
+    .congrat {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+    }
+
+    #textCongrat {
+        font-size: 11vw;
+        /* width: 98%; */
+        color: white;
+        text-shadow:
+            0px 0px 10px var(--couleur7),
+            0px 0px 40px var(--couleur7),
+            0px 0px 80px var(--couleur7);
+        font-family: "Ma police";
+
+    }
+
+    #messageCongrat,
+    #messageLose {
+        color: white;
+        font-family: 'Ma police';
+        font-size: 5vw;
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+    }
+
+    #imgBoxAleaCongrat,
+    #imgBoxAleaLose {
+        height: 65vh;
+        width: 95vw;
+
+    }
+
+
+    #btnFermerCongrat {
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 13px 19px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    #btnFermerCongrat:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    #btnFermerCongrat:main,
+    button:focus {
+        user-select: auto;
+    }
+
+    #btnFermerCongrat:hover:not(:disabled) {
+        filter: brightness(1.1);
+    }
+
+    #btnFermerCongrat:disabled {
+        cursor: auto;
+    }
+
+    #btnFermerCongrat:active:after {
+        border-width: 0 0 0px;
+    }
+
+    #btnFermerCongrat:active {
+        padding-bottom: 10px;
+    }
+
+
+    /*
+    section you lose 
+*/
+
+    .sectionLose {
+
+
+        background: black;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        font-family: 'Ma police';
+    }
+
+    .lose {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+    }
+
+    #textLose {
+        font-size: 11vw;
+        /* width: 98%; */
+        color: white;
+        text-shadow:
+            0px 0px 10px var(--couleur6),
+            0px 0px 40px var(--couleur6),
+            0px 0px 80px var(--couleur6);
+        font-family: "Ma police";
+
+    }
+
+    /*imageBoxAleaLose est au dessus*/
+
+
+
+
+
+    #btnFermerLose {
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 13px 19px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    #btnFermerLose:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    #btnFermerLose:main,
+    #btnFermerLose:focus {
+        user-select: auto;
+    }
+
+    #btnFermerLose:hover:not(:disabled) {
+        filter: brightness(1.1);
+    }
+
+    #btnFermerLose:disabled {
+        cursor: auto;
+    }
+
+    #btnFermerLose:active:after {
+        border-width: 0 0 0px;
+    }
+
+    #btnFermerLose:active {
+        padding-bottom: 10px;
+    }
+
+
+    /* 
+    ***************************************
+                    Section sortirJeu  et
+    ***************************************/
+    /* 
+    ***************************************
+                    Section recommencerJeu 
+    ***************************************/
+
+    .sortirJeu,
+    .recommencerJeu {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 35%;
+        width: 80%;
+        border: 1px solid black;
+        gap: 20px;
+        background: rgb(255 255 255 / 70%);
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+
+
+    }
+
+    .conteneurSortirJeu,
+    .conteneurRecommencerJeu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        gap: 20px;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .contenuSortirJeu,
+    .contenuRecommencerJeu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 20px;
+    }
+
+    #enteteInformation {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        box-sizing: border-box;
+        /* font-size: 5Vw; */
+        width: 98%;
+    }
+
+    #textMessage {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .btnsChoixSortirJeu,
+    .btnsChoixRecommencerJeu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 90%;
+        box-sizing: border-box;
+
+    }
+
+
+    #titreSortirJeu,
+    #titreRecommencerJeu {
+        width: 90%;
+        align-items: center;
+        gap: 10px;
+        display: flex;
+        font-family: 'Ma police';
+        letter-spacing: 2px;
+        font-size: 5vw;
+    }
+
+
+
+    #messageSortirJeu,
+    #messageRecommencerJeu {
+        font-family: 'Ma police';
+        text-transform: capitalize;
+        text-align: center;
+    }
+
+    .btnsChoixSortirJeu,
+    .btnsChoixRecommencerJeu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+
+    }
+
+
+    #btnOuiSortirJeu,
+    #btnOuiRecommencerJeu,
+    #btnNonRecommencerJeu,
+    #btnNonSortirJeu {
+        appearance: button;
+        background-color: #e0e0e0;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 13px 19px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        /* police ajouté   #1CB0F6   #e0e0e0   #3c3c3c  */
+        font-family: Arial, Helvetica, sans-serif;
+        width: 40%;
+    }
+
+    #btnOuiSortirJeu:after,
+    #btnNonRecommencerJeu:after,
+    #btnOuiRecommencerJeu:after,
+    #btnNonSortirJeu:after {
+        background-clip: padding-box;
+        background-color: #3c3c3c;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    #btnOuiSortirJeu :main,
+    #btnNonSortirJeu :main,
+    #btnOuiSortirJeu :focus,
+    #btnNonSortirJeu :focus,
+    #btnOuiRecommencerJeu :main,
+    #btnNonRecommencerJeu :main,
+    #btnOuiRecommencerJeu :focus,
+    #btnNonRecommencerJeu :focus {
+        user-select: auto;
+    }
+
+    #btnOuiSortirJeu:hover:not(:disabled),
+    #btnNonSortirJeu:hover:not(:disabled),
+    #btnOuiRecommencerJeu:hover:not(:disabled),
+    #btnNonRecommencerJeu:hover:not(:disabled) {
+        filter: brightness(1.1);
+    }
+
+    #btnOuiSortirJeu:disabled,
+    #btnNonSortirJeu:disabled,
+    #btnOuiRecommencerJeu:disabled,
+    #btnNonSortirJeu:disabled {
+        cursor: auto;
+    }
+
+    #btnOuiSortirJeu:active:after,
+    #btnNonSortirJeu:active:after,
+    #btnOuiRecommencerJeu:active:after,
+    #btnNonRecommencerJeu:active:after {
+        border-width: 0 0 0px;
+        background-color: #1899D6;
+        transition: .25s;
+    }
+
+    #btnOuiSortirJeu:active,
+    #btnNonSortirJeu:active,
+    #btnOuiRecommencerJeu:active,
+    #btnNonRecommencerJeu:active {
+        padding-bottom: 10px;
+        background-color: #1CB0F6;
+
+    }
+
+
+
+    /* la classe non conforme */
+
+    .NonConforme {
+        display: none;
+    }
+
+
+
+}
+
+/*FIN DU CODE*/
+
+
+
+@media screen and (min-width:960px) {
+    .NonConforme {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+        background: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    #H1 {
+
+
+        text-align: center;
+
+        font-size: 1.5rem;
+        color: black;
+
+
+    }
+
+    .clickPass,
+    .userPseudo,
+    .sectionJeu {
+        display: none;
+    }
+
+}
+
+/* FIN DU CODE POUR LA NON CONFORMITE*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Effet apparition de la section */
+@keyframes apparition {
+    0% {
+        opacity: 0;
+
+    }
+
+    50% {
+        opacity: 0.5;
+
+    }
+
+    100% {
+        opacity: 1;
+
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(-50%);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+}
